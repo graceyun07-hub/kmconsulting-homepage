@@ -24,7 +24,17 @@ create table if not exists public.consultation_requests (
       'business_plan',
       'management_diagnosis',
       'estimate_request',
+      'sales_marketing',
       'other'
+    )
+  ),
+  contact_time text check (
+    contact_time is null
+    or contact_time in (
+      'weekday_morning',
+      'weekday_afternoon',
+      'weekday_evening',
+      'anytime'
     )
   ),
   message text not null check (
@@ -35,8 +45,34 @@ create table if not exists public.consultation_requests (
   request_status text not null default 'new' check (
     request_status in ('new', 'contacted', 'completed')
   ),
-  created_at timestamptz not null default now(),
-  contact_time text check (
+  created_at timestamptz not null default now()
+);
+
+alter table public.consultation_requests
+  add column if not exists contact_time text;
+
+alter table public.consultation_requests
+  drop constraint if exists consultation_requests_inquiry_category_check;
+
+alter table public.consultation_requests
+  add constraint consultation_requests_inquiry_category_check
+  check (
+    inquiry_category in (
+      'government_support',
+      'business_plan',
+      'management_diagnosis',
+      'estimate_request',
+      'sales_marketing',
+      'other'
+    )
+  );
+
+alter table public.consultation_requests
+  drop constraint if exists consultation_requests_contact_time_check;
+
+alter table public.consultation_requests
+  add constraint consultation_requests_contact_time_check
+  check (
     contact_time is null
     or contact_time in (
       'weekday_morning',
@@ -44,13 +80,12 @@ create table if not exists public.consultation_requests (
       'weekday_evening',
       'anytime'
     )
-  )
-);
+  );
 
 alter table public.consultation_requests enable row level security;
 
-grant usage on schema public to anon;
-grant insert on table public.consultation_requests to anon;
+grant usage on schema public to anon, authenticated;
+grant insert on table public.consultation_requests to anon, authenticated;
 
 drop policy if exists "allow_public_consultation_request_insert"
 on public.consultation_requests;

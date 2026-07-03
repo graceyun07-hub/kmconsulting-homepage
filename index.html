@@ -179,6 +179,7 @@
     .btn:focus-visible,
     .nav a:focus-visible,
     .menu-button:focus-visible,
+    .finder-option:focus-visible,
     input:focus-visible,
     select:focus-visible,
     textarea:focus-visible {
@@ -286,6 +287,9 @@
       border-radius: 8px;
       background: #fff;
       box-shadow: var(--shadow);
+      opacity: 0;
+      animation: heroImageReveal 1100ms cubic-bezier(0.18, 0.82, 0.26, 1) 180ms forwards;
+      will-change: transform, opacity;
     }
 
     .hero-media img {
@@ -293,6 +297,41 @@
       width: 100%;
       min-height: 500px;
       object-fit: cover;
+      transform: scale(1.04);
+      animation: heroImageSettle 1300ms cubic-bezier(0.18, 0.82, 0.26, 1) 180ms forwards;
+      will-change: transform;
+    }
+
+    @keyframes heroImageReveal {
+      from {
+        opacity: 0;
+        transform: translate(-72px, 36px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes heroImageSettle {
+      from {
+        transform: scale(1.04);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media,
+      .hero-media img {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        will-change: auto;
+      }
     }
 
     section {
@@ -367,6 +406,145 @@
       margin: 0;
       color: var(--text);
       font-size: 16px;
+    }
+
+    .finder-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .finder-options,
+    .finder-result {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(17, 24, 39, 0.04);
+    }
+
+    .finder-options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .finder-option {
+      display: grid;
+      gap: 5px;
+      width: 100%;
+      min-height: 84px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfdff;
+      color: var(--navy);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .finder-option strong {
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 760;
+    }
+
+    .finder-option span {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .finder-option[aria-pressed="true"] {
+      border-color: rgba(18, 104, 173, 0.54);
+      background: var(--blue-soft);
+      box-shadow: inset 4px 0 0 var(--blue);
+    }
+
+    .finder-result {
+      display: grid;
+      align-content: start;
+      gap: 18px;
+    }
+
+    .finder-kicker {
+      margin: 0;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 760;
+    }
+
+    .finder-result h3 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.25;
+      font-weight: 760;
+      letter-spacing: -0.04em;
+    }
+
+    .finder-result p {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .finder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .finder-tags li {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: #eef6fc;
+      color: #0f4f7a;
+      font-size: 13px;
+      font-weight: 740;
+    }
+
+    .finder-steps {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: finder-step;
+    }
+
+    .finder-steps li {
+      position: relative;
+      padding-left: 32px;
+      color: var(--text);
+      font-weight: 620;
+    }
+
+    .finder-steps li::before {
+      counter-increment: finder-step;
+      content: counter(finder-step);
+      position: absolute;
+      top: 1px;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 780;
+    }
+
+    .finder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .process-layout {
@@ -613,6 +791,19 @@
       font-weight: 720;
     }
 
+    .required-mark {
+      margin-left: 4px;
+      color: #d92d20;
+      font-weight: 850;
+    }
+
+    .optional-note {
+      margin-left: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
     input,
     select,
     textarea {
@@ -621,6 +812,7 @@
       border-radius: 12px;
       background: #fbfdff;
       color: var(--navy);
+      font-size: 16px;
     }
 
     input,
@@ -637,16 +829,23 @@
 
     .agree {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfdff;
       color: var(--text);
       font-size: 14px;
       font-weight: 600;
     }
 
     .agree input {
+      flex: 0 0 auto;
       width: 18px;
       height: 18px;
+      margin-top: 3px;
+      accent-color: var(--blue);
     }
 
     .form-actions {
@@ -791,6 +990,7 @@
 
       .hero-inner,
       .process-layout,
+      .finder-layout,
       .about-box,
       .contact-layout,
       .profile-section {
@@ -887,6 +1087,8 @@
 
       .card,
       .about-box,
+      .finder-options,
+      .finder-result,
       .contact-form,
       .contact-side,
       .notice-box {
@@ -897,8 +1099,34 @@
         grid-template-columns: 1fr;
       }
 
+      .finder-option {
+        min-height: 78px;
+        padding: 16px;
+      }
+
+      .finder-actions {
+        display: grid;
+      }
+
+      .finder-actions .btn {
+        width: 100%;
+      }
+
       .form-grid {
         grid-template-columns: 1fr;
+      }
+
+      input,
+      select {
+        height: 50px;
+      }
+
+      textarea {
+        min-height: 140px;
+      }
+
+      .form-actions .btn {
+        width: 100%;
       }
 
       .footer-inner {
@@ -921,6 +1149,7 @@
       </a>
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#services">서비스 소개</a>
+        <a href="#finder">상담 찾기</a>
         <a href="#process">컨설팅 안내</a>
         <a href="#about">회사 소개</a>
         <a href="#contact">상담문의</a>
@@ -991,6 +1220,55 @@
             <h3>판로개선·마케팅 점검</h3>
             <p>상품 분석, 상세페이지, 카카오톡스토어·네이버·쿠팡 판매관리 경험을 바탕으로 개선 과제를 찾습니다.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="finder">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">QUICK FINDER</p>
+          <h2>내 상황에 맞는 상담 찾기</h2>
+          <p>가장 가까운 상황을 선택하면 필요한 상담 방향과 준비할 내용을 바로 확인할 수 있습니다.</p>
+        </div>
+        <div class="finder-layout">
+          <div class="finder-options" role="group" aria-label="상담 상황 선택">
+            <button class="finder-option" type="button" data-finder-option="startup" aria-pressed="true">
+              <strong>창업·지원사업을 준비 중이에요</strong>
+              <span>사업계획서, 공고 요건, 준비 자료가 막막할 때</span>
+            </button>
+            <button class="finder-option" type="button" data-finder-option="finance" aria-pressed="false">
+              <strong>손익과 현금흐름을 정리하고 싶어요</strong>
+              <span>매출은 있는데 남는 돈과 비용 구조가 잘 안 보일 때</span>
+            </button>
+            <button class="finder-option" type="button" data-finder-option="diagnosis" aria-pressed="false">
+              <strong>사업 구조를 점검받고 싶어요</strong>
+              <span>운영 방식, 매출 흐름, 개선 우선순위를 잡고 싶을 때</span>
+            </button>
+            <button class="finder-option" type="button" data-finder-option="marketing" aria-pressed="false">
+              <strong>판로와 마케팅을 개선하고 싶어요</strong>
+              <span>상세페이지, 판매 채널, 고객 반응을 다시 보고 싶을 때</span>
+            </button>
+          </div>
+          <div class="finder-result" aria-live="polite">
+            <p class="finder-kicker" id="finder-kicker">추천 상담</p>
+            <h3 id="finder-title">사업계획서와 정부지원사업 준비를 함께 정리해보세요.</h3>
+            <p id="finder-description">현재 아이템, 신청하려는 공고, 필요한 자료를 기준으로 사업계획의 구조와 준비 순서를 잡아드립니다.</p>
+            <ul class="finder-tags" id="finder-tags" aria-label="추천 키워드">
+              <li>사업계획서</li>
+              <li>정부지원사업</li>
+              <li>준비자료 점검</li>
+            </ul>
+            <ol class="finder-steps" id="finder-steps">
+              <li>현재 사업 단계와 신청 목적을 확인합니다.</li>
+              <li>공고 요건과 준비 자료의 빠진 부분을 점검합니다.</li>
+              <li>사업계획서의 핵심 흐름과 보완 순서를 정합니다.</li>
+            </ol>
+            <div class="finder-actions">
+              <button class="btn btn-primary" type="button" id="finder-apply">이 내용으로 문의하기</button>
+              <a class="btn btn-light" href="#services">서비스 다시 보기</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1101,19 +1379,29 @@
           <form class="contact-form" id="consultation-form">
             <div class="form-grid">
               <div class="field">
-                <label for="name">이름</label>
-                <input id="name" name="customer_name" type="text" autocomplete="name" minlength="2" maxlength="80" required>
+                <label for="name">이름<span class="required-mark" aria-label="필수">*</span></label>
+                <input id="name" name="customer_name" type="text" autocomplete="name" minlength="2" maxlength="80" placeholder="홍길동" required>
               </div>
               <div class="field">
-                <label for="phone">연락처</label>
-                <input id="phone" name="customer_phone" type="tel" autocomplete="tel" minlength="7" maxlength="30" required>
+                <label for="phone">연락처<span class="required-mark" aria-label="필수">*</span></label>
+                <input id="phone" name="customer_phone" type="tel" autocomplete="tel" inputmode="tel" minlength="7" maxlength="30" placeholder="010-0000-0000" required>
               </div>
               <div class="field">
-                <label for="email">이메일</label>
+                <label for="contact-time">연락 가능 시간<span class="optional-note">(선택)</span></label>
+                <select id="contact-time" name="contact_time">
+                  <option value="" selected>선택해주세요</option>
+                  <option value="weekday_morning">평일 오전 09:00-12:00</option>
+                  <option value="weekday_afternoon">평일 오후 12:00-18:00</option>
+                  <option value="weekday_evening">평일 저녁 18:00-20:00</option>
+                  <option value="anytime">언제든 가능</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="email">이메일<span class="optional-note">(선택)</span></label>
                 <input id="email" name="customer_email" type="email" autocomplete="email" maxlength="160" placeholder="선택 입력">
               </div>
               <div class="field">
-                <label for="business-type">사업자 유형</label>
+                <label for="business-type">사업자 유형<span class="required-mark" aria-label="필수">*</span></label>
                 <select id="business-type" name="business_type" required>
                   <option value="" selected disabled>선택해주세요</option>
                   <option value="pre_founder">예비창업자</option>
@@ -1123,24 +1411,24 @@
                 </select>
               </div>
               <div class="field">
-                <label for="topic">문의 분야</label>
+                <label for="topic">문의 분야<span class="required-mark" aria-label="필수">*</span></label>
                 <select id="topic" name="inquiry_category" required>
                   <option value="" selected disabled>선택해주세요</option>
                   <option value="estimate_request">재무관리 컨설팅</option>
                   <option value="management_diagnosis">경영진단</option>
                   <option value="business_plan">사업계획서</option>
                   <option value="government_support">정부지원사업</option>
-                  <option value="other">판로개선·마케팅 점검</option>
+                  <option value="sales_marketing">판로개선·마케팅 점검</option>
                   <option value="other">기타</option>
                 </select>
               </div>
               <div class="field full">
-                <label for="message">문의 내용</label>
-                <textarea id="message" name="message" minlength="5" maxlength="2000" required></textarea>
+                <label for="message">문의 내용<span class="required-mark" aria-label="필수">*</span></label>
+                <textarea id="message" name="message" minlength="5" maxlength="2000" placeholder="현재 상황과 상담받고 싶은 내용을 간단히 남겨주세요." required></textarea>
               </div>
               <label class="agree field full">
                 <input type="checkbox" name="agree" required>
-                개인정보 수집 및 상담 목적 이용에 동의합니다.
+                <span>개인정보 수집 및 상담 목적 이용에 동의합니다.<span class="required-mark" aria-label="필수">*</span></span>
               </label>
               <div class="field full form-actions">
                 <button class="btn btn-primary" type="submit">문의 보내기</button>
@@ -1217,13 +1505,24 @@
   <script type="module">
     import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/+esm";
 
-    const SUPABASE_URL = "https://ixahpgcdrkaazauldawm.supabase.co";
-    const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4YWhwZ2NkcmthYXphdWxkYXdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NTIyMTQsImV4cCI6MjA5ODEyODIxNH0.p5Axwo1Jllu4H6KaSwih8Zupow5oIELJTlG2X91JlyU";
+    const env = import.meta.env || {};
+    const SUPABASE_URL = env.VITE_SUPABASE_URL || "https://ixahpgcdrkaazauldawm.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = env.VITE_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_ObKD1mKW_7c23OSJH0dnHQ_FCuenb8I";
     const TABLE_NAME = "consultation_requests";
+    const GOOGLE_APPS_SCRIPT_URL = env.VITE_GOOGLE_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyeBg3cpvZeJMNHbWkOeT2y7NAHjb_IHvEellGEEoJBnn1W5E7ojn6LmlmmO5xRBfY2GQ/exec";
+    const GOOGLE_APPS_SCRIPT_PASSWORD = env.VITE_GOOGLE_APPS_SCRIPT_PASSWORD || "KM_CONSULTING_2026!";
 
     const form = document.querySelector("#consultation-form");
     const statusMessage = document.querySelector("#form-status");
     const submitButton = form?.querySelector("button[type='submit']");
+    const defaultSubmitText = submitButton?.textContent || "문의 보내기";
+    const finderOptions = Array.from(document.querySelectorAll("[data-finder-option]"));
+    const finderTitle = document.querySelector("#finder-title");
+    const finderDescription = document.querySelector("#finder-description");
+    const finderTags = document.querySelector("#finder-tags");
+    const finderSteps = document.querySelector("#finder-steps");
+    const finderApplyButton = document.querySelector("#finder-apply");
+    let selectedFinderKey = "startup";
     const isSupabaseConfigured =
       SUPABASE_URL.startsWith("https://") &&
       !SUPABASE_URL.includes("YOUR_PROJECT_ID") &&
@@ -1232,11 +1531,160 @@
     const supabase = isSupabaseConfigured
       ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
       : null;
+    const isGoogleAppsScriptConfigured =
+      GOOGLE_APPS_SCRIPT_URL.startsWith("https://script.google.com/macros/s/");
 
     const setStatus = (message, type) => {
       statusMessage.textContent = message;
       statusMessage.className = `form-status ${type || ""}`.trim();
     };
+
+    const getSelectedOptionText = (fieldName, fallback) => {
+      const field = form?.elements[fieldName];
+      if (!field?.value) {
+        return fallback;
+      }
+      return field?.selectedOptions?.[0]?.textContent.trim() || fallback;
+    };
+
+    const saveToGoogleSheet = (payload) => {
+      const inquiryCategory = getSelectedOptionText("inquiry_category", payload.inquiry_category);
+      const businessType = getSelectedOptionText("business_type", payload.business_type);
+      const contactTime = getSelectedOptionText("contact_time", "");
+      const privacyAgreed = payload.privacy_agreed ? "동의" : "미동의";
+      const receivedAt = new Date().toISOString();
+      const sheetPayload = {
+        password: GOOGLE_APPS_SCRIPT_PASSWORD,
+        no: "",
+        receivedAt,
+        name: payload.customer_name,
+        phone: payload.customer_phone,
+        email: payload.customer_email || "",
+        contactTime,
+        contactTimeCode: payload.contact_time || "",
+        inquiryCategory,
+        inquiryCategoryCode: payload.inquiry_category,
+        businessType,
+        businessTypeCode: payload.business_type,
+        message: payload.message,
+        privacyAgreed,
+        status: "신규",
+        "No": "",
+        "접수일자": receivedAt,
+        "이름": payload.customer_name,
+        "연락처": payload.customer_phone,
+        "이메일": payload.customer_email || "",
+        "연락가능시간": contactTime,
+        "문의분야": inquiryCategory,
+        "사업자유형": businessType,
+        "문의내용": payload.message,
+        "개인정보동의": privacyAgreed,
+        "처리상태": "신규"
+      };
+
+      return fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(sheetPayload)
+      });
+    };
+
+    const finderData = {
+      startup: {
+        title: "사업계획서와 정부지원사업 준비를 함께 정리해보세요.",
+        description: "현재 아이템, 신청하려는 공고, 필요한 자료를 기준으로 사업계획의 구조와 준비 순서를 잡아드립니다.",
+        tags: ["사업계획서", "정부지원사업", "준비자료 점검"],
+        steps: [
+          "현재 사업 단계와 신청 목적을 확인합니다.",
+          "공고 요건과 준비 자료의 빠진 부분을 점검합니다.",
+          "사업계획서의 핵심 흐름과 보완 순서를 정합니다."
+        ],
+        businessType: "pre_founder",
+        inquiryCategory: "business_plan"
+      },
+      finance: {
+        title: "손익, 원가, 현금흐름을 먼저 보이게 정리해보세요.",
+        description: "매출과 비용 자료를 기준으로 실제 남는 구조와 자금 흐름을 확인하고 관리 기준을 만듭니다.",
+        tags: ["재무관리", "현금흐름", "원가 점검"],
+        steps: [
+          "최근 매출과 주요 비용 흐름을 함께 봅니다.",
+          "대표님이 매월 확인할 관리 지표를 정합니다.",
+          "자금계획과 의사결정 기준을 간단한 표로 정리합니다."
+        ],
+        businessType: "sole_proprietor",
+        inquiryCategory: "estimate_request"
+      },
+      diagnosis: {
+        title: "사업 구조와 개선 우선순위를 진단해보세요.",
+        description: "운영 방식, 매출 채널, 고정비 구조를 살펴보고 지금 먼저 바꿔야 할 과제를 찾습니다.",
+        tags: ["경영진단", "개선과제", "실행순서"],
+        steps: [
+          "현재 운영 방식과 매출 흐름을 확인합니다.",
+          "문제가 반복되는 지점과 비용 부담을 분리합니다.",
+          "바로 실행할 과제와 중장기 과제를 나눕니다."
+        ],
+        businessType: "corporation",
+        inquiryCategory: "management_diagnosis"
+      },
+      marketing: {
+        title: "판매 채널과 고객 반응을 기준으로 판로를 점검해보세요.",
+        description: "상세페이지, 입점 채널, 상품 구성, 고객 반응을 함께 보며 개선 여지를 찾습니다.",
+        tags: ["판로개선", "마케팅 점검", "판매관리"],
+        steps: [
+          "현재 판매 채널과 대표 상품을 확인합니다.",
+          "상세페이지와 고객 반응에서 막히는 지점을 찾습니다.",
+          "우선 수정할 메시지, 상품 구성, 운영 과제를 정합니다."
+        ],
+        businessType: "sole_proprietor",
+        inquiryCategory: "sales_marketing"
+      }
+    };
+
+    const renderFinder = (key) => {
+      const data = finderData[key];
+      if (!data) {
+        return;
+      }
+
+      selectedFinderKey = key;
+      finderOptions.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.finderOption === key));
+      });
+
+      finderTitle.textContent = data.title;
+      finderDescription.textContent = data.description;
+      finderTags.replaceChildren(...data.tags.map((tag) => {
+        const item = document.createElement("li");
+        item.textContent = tag;
+        return item;
+      }));
+      finderSteps.replaceChildren(...data.steps.map((step) => {
+        const item = document.createElement("li");
+        item.textContent = step;
+        return item;
+      }));
+    };
+
+    finderOptions.forEach((button) => {
+      button.addEventListener("click", () => {
+        renderFinder(button.dataset.finderOption);
+      });
+    });
+
+    finderApplyButton?.addEventListener("click", () => {
+      const data = finderData[selectedFinderKey];
+      if (!data || !form) {
+        return;
+      }
+
+      form.elements.business_type.value = data.businessType;
+      form.elements.inquiry_category.value = data.inquiryCategory;
+      setStatus("선택한 상담 분야가 문의 폼에 반영되었습니다.", "");
+      document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -1247,8 +1695,8 @@
         return;
       }
 
-      if (!supabase) {
-        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요", "error");
+      if (!supabase && !isGoogleAppsScriptConfigured) {
+        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요.", "error");
         return;
       }
 
@@ -1257,6 +1705,7 @@
         customer_name: String(formData.get("customer_name") || "").trim(),
         customer_phone: String(formData.get("customer_phone") || "").trim(),
         customer_email: String(formData.get("customer_email") || "").trim() || null,
+        contact_time: String(formData.get("contact_time") || "") || null,
         business_type: String(formData.get("business_type") || ""),
         inquiry_category: String(formData.get("inquiry_category") || ""),
         message: String(formData.get("message") || "").trim(),
@@ -1264,22 +1713,36 @@
       };
 
       submitButton.disabled = true;
-      submitButton.textContent = "저장 중...";
+      submitButton.textContent = "접수 중...";
+      form.setAttribute("aria-busy", "true");
 
       try {
-        const { error } = await supabase.from(TABLE_NAME).insert(payload);
-        if (error) {
-          throw error;
+        const saveTasks = [];
+
+        if (supabase) {
+          saveTasks.push(
+            supabase.from(TABLE_NAME).insert(payload).then(({ error }) => {
+              if (error) {
+                throw error;
+              }
+            })
+          );
         }
 
+        if (isGoogleAppsScriptConfigured) {
+          saveTasks.push(saveToGoogleSheet(payload));
+        }
+
+        await Promise.all(saveTasks);
         form.reset();
-        setStatus("문의가 접수되었습니다", "success");
+        setStatus("문의가 접수되었습니다. 확인 후 연락드리겠습니다.", "success");
       } catch (error) {
-        console.error("Supabase insert failed:", error);
-        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요", "error");
+        console.error("Consultation submit failed:", error);
+        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요.", "error");
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = "문의 보내기";
+        submitButton.textContent = defaultSubmitText;
+        form.removeAttribute("aria-busy");
       }
     });
   </script>
