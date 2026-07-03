@@ -649,6 +649,32 @@
       height: 18px;
     }
 
+    .form-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-status {
+      min-height: 24px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .form-status.success {
+      color: #0f7a56;
+    }
+
+    .form-status.error {
+      color: #c2410c;
+    }
+
+    .btn[disabled] {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+    }
+
     .contact-side {
       display: grid;
       gap: 14px;
@@ -1072,48 +1098,53 @@
           <p>이름과 연락처, 필요한 상담 분야를 남겨주시면 확인 후 연락드립니다. 빠른 문의는 카카오톡 상담을 이용해주세요.</p>
         </div>
         <div class="contact-layout">
-          <form class="contact-form">
+          <form class="contact-form" id="consultation-form">
             <div class="form-grid">
               <div class="field">
                 <label for="name">이름</label>
-                <input id="name" name="name" type="text" autocomplete="name">
+                <input id="name" name="customer_name" type="text" autocomplete="name" minlength="2" maxlength="80" required>
               </div>
               <div class="field">
                 <label for="phone">연락처</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel">
+                <input id="phone" name="customer_phone" type="tel" autocomplete="tel" minlength="7" maxlength="30" required>
+              </div>
+              <div class="field">
+                <label for="email">이메일</label>
+                <input id="email" name="customer_email" type="email" autocomplete="email" maxlength="160" placeholder="선택 입력">
               </div>
               <div class="field">
                 <label for="business-type">사업자 유형</label>
-                <select id="business-type" name="business-type">
-                  <option>선택해주세요</option>
-                  <option>예비창업자</option>
-                  <option>개인사업자</option>
-                  <option>법인사업자</option>
-                  <option>기타</option>
+                <select id="business-type" name="business_type" required>
+                  <option value="" selected disabled>선택해주세요</option>
+                  <option value="pre_founder">예비창업자</option>
+                  <option value="sole_proprietor">개인사업자</option>
+                  <option value="corporation">법인사업자</option>
+                  <option value="other">기타</option>
                 </select>
               </div>
               <div class="field">
                 <label for="topic">문의 분야</label>
-                <select id="topic" name="topic">
-                  <option>선택해주세요</option>
-                  <option>재무관리 컨설팅</option>
-                  <option>경영진단</option>
-                  <option>사업계획서</option>
-                  <option>정부지원사업</option>
-                  <option>판로개선·마케팅 점검</option>
-                  <option>기타</option>
+                <select id="topic" name="inquiry_category" required>
+                  <option value="" selected disabled>선택해주세요</option>
+                  <option value="estimate_request">재무관리 컨설팅</option>
+                  <option value="management_diagnosis">경영진단</option>
+                  <option value="business_plan">사업계획서</option>
+                  <option value="government_support">정부지원사업</option>
+                  <option value="other">판로개선·마케팅 점검</option>
+                  <option value="other">기타</option>
                 </select>
               </div>
               <div class="field full">
                 <label for="message">문의 내용</label>
-                <textarea id="message" name="message"></textarea>
+                <textarea id="message" name="message" minlength="5" maxlength="2000" required></textarea>
               </div>
               <label class="agree field full">
-                <input type="checkbox" name="agree">
+                <input type="checkbox" name="agree" required>
                 개인정보 수집 및 상담 목적 이용에 동의합니다.
               </label>
-              <div class="field full">
-                <a class="btn btn-primary" href="mailto:graceyun07@gmail.com">문의 보내기</a>
+              <div class="field full form-actions">
+                <button class="btn btn-primary" type="submit">문의 보내기</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
               </div>
             </div>
           </form>
@@ -1183,5 +1214,74 @@
       </div>
     </div>
   </footer>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/+esm";
+
+    const SUPABASE_URL = "https://ixahpgcdrkaazauldawm.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4YWhwZ2NkcmthYXphdWxkYXdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NTIyMTQsImV4cCI6MjA5ODEyODIxNH0.p5Axwo1Jllu4H6KaSwih8Zupow5oIELJTlG2X91JlyU";
+    const TABLE_NAME = "consultation_requests";
+
+    const form = document.querySelector("#consultation-form");
+    const statusMessage = document.querySelector("#form-status");
+    const submitButton = form?.querySelector("button[type='submit']");
+    const isSupabaseConfigured =
+      SUPABASE_URL.startsWith("https://") &&
+      !SUPABASE_URL.includes("YOUR_PROJECT_ID") &&
+      !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_SUPABASE");
+
+    const supabase = isSupabaseConfigured
+      ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+      : null;
+
+    const setStatus = (message, type) => {
+      statusMessage.textContent = message;
+      statusMessage.className = `form-status ${type || ""}`.trim();
+    };
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setStatus("", "");
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (!supabase) {
+        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요", "error");
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        customer_name: String(formData.get("customer_name") || "").trim(),
+        customer_phone: String(formData.get("customer_phone") || "").trim(),
+        customer_email: String(formData.get("customer_email") || "").trim() || null,
+        business_type: String(formData.get("business_type") || ""),
+        inquiry_category: String(formData.get("inquiry_category") || ""),
+        message: String(formData.get("message") || "").trim(),
+        privacy_agreed: formData.get("agree") === "on"
+      };
+
+      submitButton.disabled = true;
+      submitButton.textContent = "저장 중...";
+
+      try {
+        const { error } = await supabase.from(TABLE_NAME).insert(payload);
+        if (error) {
+          throw error;
+        }
+
+        form.reset();
+        setStatus("문의가 접수되었습니다", "success");
+      } catch (error) {
+        console.error("Supabase insert failed:", error);
+        setStatus("저장 중 문제가 발생했습니다. 다시 시도해주세요", "error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "문의 보내기";
+      }
+    });
+  </script>
 </body>
 </html>
