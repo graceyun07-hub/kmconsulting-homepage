@@ -1,0 +1,11 @@
+<svg width="292" height="64" viewBox="0 0 292 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">케이엠경영컨설팅 로고</title>
+  <desc id="desc">성장 그래프와 기준선을 모티프로 한 케이엠경영컨설팅 워드마크</desc>
+  <rect width="292" height="64" rx="18" fill="white"/>
+  <circle cx="34" cy="32" r="24" fill="#111827"/>
+  <path d="M20 39L29 29L36 35L48 22" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 45H50" stroke="#D9B84F" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="22" r="3.6" fill="#60A5FA"/>
+  <text x="74" y="31" fill="#111827" font-family="Pretendard, 'Noto Sans KR', Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="-0.8">케이엠경영컨설팅</text>
+  <text x="75" y="48" fill="#6B7280" font-family="Pretendard, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.5">KM Management Consulting</text>
+</svg>

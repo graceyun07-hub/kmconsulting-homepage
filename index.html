@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="케이엠경영컨설팅은 개인사업자와 법인을 위한 재무관리, 경영진단, 손익관리, 원가관리, 현금흐름 관리, 자금계획 컨설팅을 제공합니다.">
+  <link rel="icon" href="images/logo-mascot.png" type="image/png">
   <title>케이엠경영컨설팅</title>
   <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+
     :root {
       --navy: #111827;
       --blue: #1268ad;
@@ -18,7 +21,7 @@
       --white: #ffffff;
       --shadow: 0 24px 60px rgba(18, 104, 173, 0.12);
       --radius: 18px;
-      --max: 1080px;
+      --max: 1240px;
     }
 
     * {
@@ -33,8 +36,9 @@
       margin: 0;
       color: var(--navy);
       background: var(--white);
-      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
-      line-height: 1.7;
+      font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      font-weight: 500;
+      line-height: 1.68;
       word-break: keep-all;
     }
 
@@ -75,7 +79,7 @@
     }
 
     .wrap {
-      width: min(100% - 40px, var(--max));
+      width: min(100% - 56px, var(--max));
       margin: 0 auto;
     }
 
@@ -90,22 +94,45 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
+      gap: 12px;
+      width: auto;
+      max-width: 58vw;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
+      display: block;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      background: var(--navy);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 900;
+      object-fit: cover;
+      object-position: center 35%;
+      border: 1px solid rgba(18, 104, 173, 0.14);
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 3px;
+      line-height: 1;
+      min-width: 0;
+    }
+
+    .brand-name {
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand-en {
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -114,7 +141,8 @@
       gap: 22px;
       color: #263241;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 650;
+      letter-spacing: -0.025em;
     }
 
     .menu-button {
@@ -126,7 +154,7 @@
       background: #fff;
       color: var(--navy);
       font-size: 24px;
-      font-weight: 800;
+      font-weight: 720;
       line-height: 1;
     }
 
@@ -139,7 +167,8 @@
       padding: 0 24px;
       border: 1px solid transparent;
       border-radius: 10px;
-      font-weight: 900;
+      font-weight: 740;
+      letter-spacing: -0.025em;
       transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
 
@@ -184,18 +213,18 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 50px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(460px, 1.05fr);
+      gap: 64px;
       align-items: center;
-      padding: 82px 0 96px;
+      padding: 92px 0 108px;
     }
 
     .eyebrow {
       margin: 0 0 16px;
       color: var(--blue);
       font-size: 15px;
-      font-weight: 900;
-      letter-spacing: 0.01em;
+      font-weight: 740;
+      letter-spacing: -0.012em;
     }
 
     h1,
@@ -207,31 +236,32 @@
 
     h1 {
       margin-bottom: 22px;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.13;
+      font-size: clamp(42px, 5.25vw, 66px);
+      line-height: 1.15;
       letter-spacing: -0.055em;
-      font-weight: 900;
+      font-weight: 760;
     }
 
     .hero-copy {
-      max-width: 620px;
+      max-width: 680px;
       margin-bottom: 32px;
       color: var(--text);
       font-size: 20px;
+      font-weight: 500;
     }
 
     .hero-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      max-width: 560px;
+      max-width: 640px;
       margin-bottom: 20px;
     }
 
     .hero-tags {
       display: grid;
       gap: 10px;
-      max-width: 560px;
+      max-width: 640px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -246,7 +276,8 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.72);
       color: #0f4f7a;
-      font-weight: 900;
+      font-weight: 720;
+      letter-spacing: -0.025em;
       box-shadow: 0 10px 30px rgba(18, 104, 173, 0.05);
     }
 
@@ -260,7 +291,7 @@
     .hero-media img {
       display: block;
       width: 100%;
-      min-height: 420px;
+      min-height: 500px;
       object-fit: cover;
     }
 
@@ -273,8 +304,8 @@
     }
 
     .section-head {
-      max-width: 780px;
-      margin-bottom: 38px;
+      max-width: 840px;
+      margin-bottom: 44px;
     }
 
     .section-head h2 {
@@ -282,7 +313,7 @@
       font-size: clamp(32px, 4.2vw, 52px);
       line-height: 1.22;
       letter-spacing: -0.045em;
-      font-weight: 900;
+      font-weight: 760;
     }
 
     .section-head p {
@@ -293,17 +324,17 @@
     .card-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
 
     .service-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
 
     .card {
-      min-height: 230px;
+      min-height: 250px;
       padding: 32px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -321,14 +352,14 @@
       background: var(--blue-soft);
       color: var(--blue);
       font-size: 22px;
-      font-weight: 900;
+      font-weight: 760;
     }
 
     .card h3 {
       margin-bottom: 10px;
       font-size: 24px;
       line-height: 1.35;
-      font-weight: 900;
+      font-weight: 740;
       letter-spacing: -0.03em;
     }
 
@@ -341,7 +372,7 @@
     .process-layout {
       display: grid;
       grid-template-columns: 0.72fr 1.28fr;
-      gap: 34px;
+      gap: 44px;
       align-items: start;
     }
 
@@ -371,13 +402,14 @@
       border-radius: 50%;
       background: var(--blue);
       color: #fff;
-      font-weight: 900;
+      font-weight: 760;
     }
 
     .process-item h3 {
       margin-bottom: 6px;
       font-size: 22px;
-      letter-spacing: -0.03em;
+      font-weight: 740;
+      letter-spacing: -0.045em;
     }
 
     .process-item p {
@@ -388,9 +420,9 @@
     .about-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 44px;
       align-items: center;
-      padding: 42px;
+      padding: 48px;
       border: 1px solid var(--line);
       border-radius: 24px;
       background: #fff;
@@ -402,7 +434,7 @@
       font-size: clamp(30px, 4vw, 50px);
       line-height: 1.22;
       letter-spacing: -0.045em;
-      font-weight: 900;
+      font-weight: 760;
     }
 
     .about-box p {
@@ -422,7 +454,7 @@
       position: relative;
       padding-left: 26px;
       color: var(--text);
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .check-list li::before {
@@ -456,10 +488,98 @@
       color: rgba(255, 255, 255, 0.82);
     }
 
+    .profile-section {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(340px, 1.14fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .profile-intro,
+    .profile-detail {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(17, 24, 39, 0.04);
+    }
+
+    .profile-intro {
+      padding: 38px;
+      background:
+        linear-gradient(180deg, rgba(246, 251, 255, 0.95), rgba(255, 255, 255, 0.96)),
+        #fff;
+    }
+
+    .profile-intro h3 {
+      margin-bottom: 18px;
+      font-size: clamp(30px, 3.6vw, 46px);
+      line-height: 1.2;
+      font-weight: 760;
+      letter-spacing: -0.055em;
+    }
+
+    .profile-intro p {
+      margin-bottom: 24px;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .profile-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .profile-badges li {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #0f4f7a;
+      font-size: 14px;
+      font-weight: 720;
+    }
+
+    .profile-detail {
+      padding: 30px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .profile-item {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--sky);
+    }
+
+    .profile-item strong {
+      display: block;
+      color: var(--blue);
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 760;
+      letter-spacing: -0.025em;
+    }
+
+    .profile-item span {
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 680;
+    }
+
     .contact-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
+      gap: 28px;
       align-items: start;
     }
 
@@ -490,7 +610,7 @@
     label {
       color: #2f3b4a;
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 720;
     }
 
     input,
@@ -521,7 +641,7 @@
       gap: 10px;
       color: var(--text);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .agree input {
@@ -546,13 +666,13 @@
     .contact-card strong {
       color: var(--navy);
       font-size: 18px;
-      font-weight: 900;
+      font-weight: 740;
     }
 
     .contact-card span,
     .contact-card a {
       color: var(--text);
-      font-weight: 800;
+      font-weight: 650;
       word-break: break-all;
     }
 
@@ -574,7 +694,7 @@
       border-radius: var(--radius);
       background: #fff;
       color: var(--text);
-      font-weight: 800;
+      font-weight: 650;
     }
 
     .notice-box {
@@ -598,7 +718,7 @@
       border-radius: 14px;
       background: var(--blue-soft);
       color: var(--navy) !important;
-      font-weight: 900;
+      font-weight: 720;
     }
 
     .footer {
@@ -626,10 +746,14 @@
       gap: 14px;
       flex-wrap: wrap;
       color: #fff;
-      font-weight: 800;
+      font-weight: 650;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+      .wrap {
+        width: min(100% - 40px, var(--max));
+      }
+
       .nav-links {
         display: none;
       }
@@ -642,7 +766,8 @@
       .hero-inner,
       .process-layout,
       .about-box,
-      .contact-layout {
+      .contact-layout,
+      .profile-section {
         grid-template-columns: 1fr;
       }
 
@@ -654,10 +779,17 @@
         order: 2;
       }
 
-      .service-grid,
       .card-grid,
       .recommend-list {
         grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .profile-section {
+        gap: 18px;
       }
     }
 
@@ -671,13 +803,21 @@
       }
 
       .brand {
-        gap: 12px;
-        font-size: 18px;
+        gap: 9px;
+        max-width: calc(100vw - 104px);
       }
 
       .brand-mark {
         width: 44px;
         height: 44px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .brand-en {
+        font-size: 9px;
       }
 
       h1 {
@@ -690,6 +830,25 @@
 
       .hero-actions {
         grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-section {
+        gap: 16px;
+      }
+
+      .profile-intro,
+      .profile-detail {
+        padding: 24px;
+      }
+
+      .profile-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 18px;
       }
 
       .hero-media img {
@@ -728,8 +887,11 @@
   <header class="site-header" id="top">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="케이엠경영컨설팅 첫 화면으로 이동">
-        <span class="brand-mark">KM</span>
-        <span>케이엠경영컨설팅</span>
+        <img class="brand-mark" src="images/logo-mascot.png" alt="">
+        <span class="brand-copy">
+          <span class="brand-name">케이엠경영컨설팅</span>
+          <span class="brand-en">KM Management Consulting</span>
+        </span>
       </a>
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#services">서비스 소개</a>
@@ -746,7 +908,7 @@
     <section class="hero">
       <div class="wrap hero-inner">
         <div>
-          <p class="eyebrow">KM MANAGEMENT CONSULTING</p>
+          <p class="eyebrow">KM Management Consulting</p>
           <h1>사업자의 성장을<br>돕는 경영 컨설팅</h1>
           <p class="hero-copy">사업 성장에 필요한 재무관리, 경영진단, 사업계획과 실행 방향을 함께 정리합니다.</p>
           <div class="hero-actions">
@@ -760,7 +922,7 @@
           </ul>
         </div>
         <div class="hero-media">
-          <img src="https://kmconsulting.duckdns.org/_next/image?url=%2Fkm-consulting-hero.png&w=1080&q=75" alt="경영 컨설팅 상담을 진행하는 모습">
+          <img src="images/hero-consulting.png" alt="경영 컨설팅 상담을 진행하는 모습">
         </div>
       </div>
     </section>
@@ -864,6 +1026,40 @@
         <div class="mini-panel">
           <strong>경영지도사(재무관리) 관점의 실무형 컨설팅</strong>
           <p>자료를 예쁘게 만드는 것보다, 대표님이 바로 이해하고 판단할 수 있는 기준을 만드는 데 집중합니다.</p>
+        </div>
+      </div>
+      <div class="wrap profile-section">
+        <div class="profile-intro">
+          <p class="eyebrow">CEO PROFILE</p>
+          <h3>대표 윤경만</h3>
+          <p>
+            숫자와 제도를 어렵게 설명하기보다, 사업자가 바로 이해하고 실행할 수 있는 기준을 만드는 데 집중합니다. 소상공인과 중소기업 현장에서 쌓은 상담·컨설팅 경험을 바탕으로 현재 상황에 맞는 재무관리 방향을 함께 정리합니다.
+          </p>
+          <ul class="profile-badges" aria-label="대표 핵심 키워드">
+            <li>경영지도사(재무관리)</li>
+            <li>소상공인 컨설팅</li>
+            <li>사업계획서</li>
+            <li>관리자료 정리</li>
+            <li>정부지원사업 준비</li>
+          </ul>
+        </div>
+        <div class="profile-detail" aria-label="대표 주요 이력">
+          <div class="profile-item">
+            <strong>전문 자격</strong>
+            <span>경영지도사(재무관리)</span>
+          </div>
+          <div class="profile-item">
+            <strong>현장 경험</strong>
+            <span>2009년부터 소상공인, 창업자, 개인사업자, 법인사업자 대상 컨설팅 수행</span>
+          </div>
+          <div class="profile-item">
+            <strong>공공기관 활동</strong>
+            <span>소상공인시장진흥공단, 한국생산성본부 등 강의·심사·멘토링 경험</span>
+          </div>
+          <div class="profile-item">
+            <strong>상담 방향</strong>
+            <span>손익, 원가, 현금흐름, 자금계획, 사업계획을 실제 운영 관점에서 점검</span>
+          </div>
         </div>
       </div>
     </section>

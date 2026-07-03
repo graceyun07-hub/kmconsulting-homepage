@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KM Management Consulting Logo Concept Board</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+
+    :root {
+      --navy: #111827;
+      --deep: #0b2a57;
+      --blue: #1268ad;
+      --sky: #eef6fc;
+      --line: #dbe7f1;
+      --ink: #17202e;
+      --muted: #6c7582;
+      --paper: #f7fbff;
+      --white: #ffffff;
+      --gold: #d9b84f;
+      --mint: #7fb9aa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #eaf2f8;
+      color: var(--ink);
+      font-family: "Pretendard Variable", "Pretendard", "Noto Sans KR", Arial, sans-serif;
+    }
+
+    .board {
+      width: 1600px;
+      min-height: 2260px;
+      margin: 0 auto;
+      padding: 72px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.94), rgba(247,251,255,0.96)),
+        var(--paper);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 0.55fr;
+      gap: 48px;
+      align-items: end;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 780;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 58px;
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      font-weight: 780;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.65;
+      font-weight: 520;
+    }
+
+    .brand-note {
+      justify-self: end;
+      width: 360px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .brand-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-note span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .group {
+      margin-top: 44px;
+    }
+
+    .group-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .group-title {
+      margin: 0;
+      color: var(--navy);
+      font-size: 24px;
+      font-weight: 760;
+      letter-spacing: -0.04em;
+    }
+
+    .group-caption {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 560;
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 14px;
+    }
+
+    .logo-card {
+      min-height: 160px;
+      display: grid;
+      grid-template-rows: 22px 1fr 18px;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.035);
+    }
+
+    .num {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: 0.12em;
+    }
+
+    .logo-box {
+      display: grid;
+      place-items: center;
+      min-height: 88px;
+    }
+
+    .logo-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 660;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    svg {
+      overflow: visible;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr 0.9fr 1.1fr;
+      gap: 18px;
+      margin-top: 54px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .panel {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 760;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 520;
+    }
+
+    .panel ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .swatch {
+      height: 72px;
+      padding: 10px;
+      display: flex;
+      align-items: end;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 720;
+    }
+
+    .mockups {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mock {
+      height: 116px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+    }
+
+    .sign {
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 760;
+    }
+
+    .sticker {
+      width: 64px;
+      height: 64px;
+      margin: 16px auto 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--blue);
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .cardmock {
+      height: 68px;
+      margin-top: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 20px rgba(17, 24, 39, 0.08);
+      padding: 10px;
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 760;
+    }
+  </style>
+</head>
+<body>
+  <main class="board">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Identity Exploration Sheet</p>
+        <h1>케이엠경영컨설팅<br>Logo Concept Board</h1>
+      </div>
+      <div class="brand-note">
+        <strong>KM Management Consulting</strong>
+        <span>재무관리 기반 경영컨설팅 브랜드를 위한 50가지 로고 탐색안. 안정감, 자료 정리, 성장 방향, 실행 지원의 이미지를 하나의 체계 안에서 변주했습니다.</span>
+      </div>
+    </header>
+
+    <section class="group">
+      <div class="group-head">
+        <h2 class="group-title">Group A. 원형 심볼 기반 로고 01~10</h2>
+        <p class="group-caption">Badge · Stamp · Profile Symbol</p>
+      </div>
+      <div class="logo-grid" id="group-a"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-head">
+        <h2 class="group-title">Group B. 서비스 오브제 기반 로고 11~20</h2>
+        <p class="group-caption">Document · Chart · Plan · Dashboard</p>
+      </div>
+      <div class="logo-grid" id="group-b"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-head">
+        <h2 class="group-title">Group C. 자연·감성 모티프 기반 로고 21~30</h2>
+        <p class="group-caption">Path · Leaf · Wave · Sun · Local Rhythm</p>
+      </div>
+      <div class="logo-grid" id="group-c"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-head">
+        <h2 class="group-title">Group D. 추상 기호·네거티브 스페이스 기반 로고 31~40</h2>
+        <p class="group-caption">Geometry · Balance · Hidden K/M · Direction</p>
+      </div>
+      <div class="logo-grid" id="group-d"></div>
+    </section>
+
+    <section class="group">
+      <div class="group-head">
+        <h2 class="group-title">Group E. 워드마크·모노그램·배지 응용 로고 41~50</h2>
+        <p class="group-caption">Wordmark · Monogram · Signage · Business Card</p>
+      </div>
+      <div class="logo-grid" id="group-e"></div>
+    </section>
+
+    <section class="bottom">
+      <div class="panel">
+        <h2>Concept Direction</h2>
+        <p>케이엠경영컨설팅의 핵심인 재무관리, 경영진단, 자료 정리, 성장 방향을 `KM` 이니셜과 정돈된 구조로 표현했습니다. 법률·세무 대행 이미지보다 사업자의 의사결정을 돕는 경영 파트너의 신뢰감을 우선했습니다.</p>
+      </div>
+      <div class="panel">
+        <h2>Color Palette</h2>
+        <div class="swatches">
+          <div class="swatch" style="background:#111827">Navy</div>
+          <div class="swatch" style="background:#1268ad">Blue</div>
+          <div class="swatch" style="background:#7fb9aa">Mint</div>
+          <div class="swatch" style="background:#d9b84f;color:#111827">Gold</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Typography Direction</h2>
+        <ul>
+          <li>둥근 획의 모던 산세리프</li>
+          <li>굵지만 과하지 않은 Bold 워드마크</li>
+          <li>한글 가독성을 우선한 자간과 여백</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Application Example</h2>
+        <div class="mockups">
+          <div class="mock"><div class="sign">KM Management Consulting</div></div>
+          <div class="mock"><div class="sticker">KM</div></div>
+          <div class="mock"><div class="cardmock">케이엠경영컨설팅<br><span style="color:#6c7582">Business Card</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const C = {
+      navy: "#111827",
+      blue: "#1268ad",
+      deep: "#0b2a57",
+      sky: "#eef6fc",
+      mint: "#7fb9aa",
+      gold: "#d9b84f"
+    };
+
+    const labels = {
+      a: ["Round Seal", "Open Ring", "Double Badge", "Growth Stamp", "Compass Circle", "Data Orbit", "Trust Mark", "KM Dot", "Stable Frame", "Advisory Seal"],
+      b: ["Report", "Dashboard", "Cash Flow", "Plan Sheet", "Chart Desk", "Folder", "Checklist", "Window", "Brief", "Metric"],
+      c: ["Path", "Leaf", "Wave", "Soil Line", "Ridge", "Sun Path", "Wind", "Seed", "Local Road", "Calm Flow"],
+      d: ["Hidden K", "Negative M", "Balance", "Cut Plane", "Signal", "Grid", "Pivot", "Open Box", "Bridge", "North"],
+      e: ["KM Word", "Korean Mark", "Monogram", "Badge Lockup", "Sign Type", "Initial Seal", "Consult Mark", "Compact", "Wide", "Stamp Type"]
+    };
+
+    function card(num, label, svg) {
+      return `
+        <article class="logo-card">
+          <div class="num">${String(num).padStart(2, "0")}</div>
+          <div class="logo-box">${svg}</div>
+          <div class="logo-label">${label}</div>
+        </article>
+      `;
+    }
+
+    function word(x=50, y=98, size=18, fill=C.navy, text="KM") {
+      return `<text x="${x}" y="${y}" text-anchor="middle" fill="${fill}" font-size="${size}" font-weight="820" font-family="Pretendard, Arial">${text}</text>`;
+    }
+
+    function svgA(i) {
+      const n = i % 10;
+      const rings = [
+        `<circle cx="50" cy="50" r="36" fill="${C.navy}"/><circle cx="50" cy="50" r="24" fill="none" stroke="white" stroke-width="2"/>${word(50,56,20,"white")}`,
+        `<circle cx="50" cy="50" r="35" fill="white" stroke="${C.navy}" stroke-width="5"/><path d="M32 62C44 53 55 39 68 34" stroke="${C.blue}" stroke-width="4" stroke-linecap="round"/>${word(50,55,20)}`,
+        `<circle cx="50" cy="50" r="39" fill="${C.sky}" stroke="${C.blue}" stroke-width="2"/><circle cx="50" cy="50" r="25" fill="${C.navy}"/>${word(50,56,19,"white")}`,
+        `<circle cx="50" cy="50" r="36" fill="${C.navy}"/><path d="M25 68h50" stroke="${C.gold}" stroke-width="4"/><path d="M30 60l14-18 10 10 18-24" stroke="white" stroke-width="4" fill="none"/>`,
+        `<circle cx="50" cy="50" r="37" fill="white" stroke="${C.line || "#dbe7f1"}" stroke-width="2"/><path d="M50 18v64M18 50h64" stroke="${C.blue}" stroke-width="2"/><circle cx="50" cy="50" r="18" fill="${C.navy}"/>${word(50,56,16,"white")}`,
+        `<circle cx="50" cy="50" r="35" fill="${C.deep}"/><ellipse cx="50" cy="50" rx="38" ry="15" fill="none" stroke="${C.mint}" stroke-width="3" transform="rotate(-24 50 50)"/>${word(50,56,18,"white")}`,
+        `<circle cx="50" cy="50" r="36" fill="white" stroke="${C.navy}" stroke-width="3"/><path d="M34 56l10 9 24-31" stroke="${C.blue}" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+        `<circle cx="50" cy="50" r="34" fill="${C.navy}"/><circle cx="35" cy="35" r="5" fill="${C.gold}"/><circle cx="65" cy="65" r="5" fill="${C.mint}"/>${word(50,56,18,"white")}`,
+        `<circle cx="50" cy="50" r="39" fill="${C.sky}"/><rect x="29" y="29" width="42" height="42" rx="12" fill="${C.navy}"/>${word(50,56,17,"white")}`,
+        `<circle cx="50" cy="50" r="37" fill="${C.navy}"/><path d="M25 42c13-13 35-13 50 0M25 58c13 13 35 13 50 0" stroke="${C.gold}" stroke-width="3" fill="none"/>${word(50,56,16,"white")}`
+      ];
+      return `<svg width="108" height="108" viewBox="0 0 100 100">${rings[n]}</svg>`;
+    }
+
+    function svgB(i) {
+      const n = i % 10;
+      const items = [
+        `<rect x="30" y="18" width="40" height="58" rx="6" fill="white" stroke="${C.navy}" stroke-width="4"/><path d="M38 34h24M38 46h18M38 58h24" stroke="${C.blue}" stroke-width="3"/>`,
+        `<rect x="20" y="24" width="60" height="48" rx="8" fill="${C.navy}"/><rect x="30" y="54" width="8" height="10" fill="${C.gold}"/><rect x="46" y="44" width="8" height="20" fill="white"/><rect x="62" y="34" width="8" height="30" fill="${C.mint}"/>`,
+        `<path d="M22 68h56" stroke="${C.navy}" stroke-width="4"/><path d="M28 58c10-25 26-25 44-6" stroke="${C.blue}" stroke-width="5" fill="none"/><circle cx="50" cy="42" r="8" fill="${C.gold}"/>`,
+        `<rect x="22" y="22" width="56" height="56" rx="10" fill="${C.sky}" stroke="${C.blue}" stroke-width="3"/><path d="M34 38h32M34 50h26M34 62h20" stroke="${C.navy}" stroke-width="4"/>`,
+        `<rect x="18" y="46" width="64" height="30" rx="6" fill="${C.navy}"/><path d="M28 50l12-13 11 8 19-22" stroke="${C.gold}" stroke-width="4" fill="none"/>`,
+        `<path d="M18 32h25l7 8h32v36H18z" fill="${C.sky}" stroke="${C.navy}" stroke-width="4" stroke-linejoin="round"/><path d="M30 57h40" stroke="${C.blue}" stroke-width="4"/>`,
+        `<rect x="28" y="18" width="44" height="62" rx="8" fill="white" stroke="${C.navy}" stroke-width="4"/><path d="M38 42l8 8 16-18" stroke="${C.blue}" stroke-width="5" fill="none"/>`,
+        `<rect x="18" y="22" width="64" height="48" rx="8" fill="${C.navy}"/><path d="M18 38h64" stroke="white" stroke-width="3"/><path d="M38 70h24" stroke="${C.blue}" stroke-width="5"/>`,
+        `<rect x="24" y="26" width="52" height="48" rx="8" fill="${C.sky}" stroke="${C.navy}" stroke-width="4"/><path d="M34 40h32M34 52h20" stroke="${C.blue}" stroke-width="4"/><circle cx="66" cy="64" r="6" fill="${C.gold}"/>`,
+        `<path d="M20 66h60M30 66V40M48 66V28M66 66V48" stroke="${C.navy}" stroke-width="6" stroke-linecap="round"/><path d="M28 30h40" stroke="${C.blue}" stroke-width="4"/>`
+      ];
+      return `<svg width="108" height="108" viewBox="0 0 100 100">${items[n]}</svg>`;
+    }
+
+    function svgC(i) {
+      const n = i % 10;
+      const items = [
+        `<path d="M22 70C38 42 58 33 78 24" stroke="${C.blue}" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M52 38c-5-15 10-21 21-22-1 16-9 27-21 22z" fill="${C.mint}"/>`,
+        `<path d="M50 78C28 58 31 28 71 20c5 32-5 52-21 58z" fill="${C.sky}" stroke="${C.navy}" stroke-width="4"/><path d="M46 68c7-20 15-31 25-44" stroke="${C.blue}" stroke-width="4"/>`,
+        `<path d="M18 54c12-14 24-14 36 0s24 14 36 0" stroke="${C.blue}" stroke-width="5" fill="none"/><path d="M18 68c12-11 24-11 36 0s24 11 36 0" stroke="${C.mint}" stroke-width="4" fill="none"/>`,
+        `<path d="M20 66c16-8 35-8 60 0" stroke="${C.gold}" stroke-width="5" fill="none"/><path d="M30 50c14-7 28-7 40 0" stroke="${C.navy}" stroke-width="4" fill="none"/>`,
+        `<path d="M18 68l22-30 17 18 13-12 12 24z" fill="${C.sky}" stroke="${C.navy}" stroke-width="4" stroke-linejoin="round"/><circle cx="67" cy="27" r="8" fill="${C.gold}"/>`,
+        `<circle cx="62" cy="32" r="13" fill="${C.gold}"/><path d="M20 70c18-28 38-28 60-6" stroke="${C.blue}" stroke-width="5" fill="none"/>`,
+        `<path d="M20 38c20-12 37-12 60 0M20 54c20-12 37-12 60 0M20 70c20-12 37-12 60 0" stroke="${C.blue}" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+        `<path d="M50 75c-17-12-18-34 0-50 18 16 17 38 0 50z" fill="${C.mint}"/><circle cx="50" cy="50" r="9" fill="${C.navy}"/>`,
+        `<path d="M18 72C35 42 52 36 82 28" stroke="${C.navy}" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M42 62l11-16 9 8 14-22" stroke="${C.blue}" stroke-width="4" fill="none"/>`,
+        `<path d="M25 60c16 15 34 15 50 0M25 46c16-15 34-15 50 0" stroke="${C.mint}" stroke-width="5" fill="none"/><circle cx="50" cy="53" r="10" fill="${C.blue}"/>`
+      ];
+      return `<svg width="108" height="108" viewBox="0 0 100 100">${items[n]}</svg>`;
+    }
+
+    function svgD(i) {
+      const n = i % 10;
+      const items = [
+        `<path d="M24 24h16v22l22-22h18L54 50l27 26H62L40 54v22H24z" fill="${C.navy}"/>`,
+        `<path d="M22 76V24h16l12 22 12-22h16v52H63V48L52 68h-4L37 48v28z" fill="${C.navy}"/><path d="M47 24h6v44h-6z" fill="white"/>`,
+        `<circle cx="50" cy="50" r="32" fill="${C.sky}"/><path d="M26 50h48M50 26v48" stroke="${C.navy}" stroke-width="5"/><circle cx="50" cy="50" r="9" fill="${C.blue}"/>`,
+        `<path d="M22 22h56L62 78H22z" fill="${C.navy}"/><path d="M38 22h40L62 78H22z" fill="${C.blue}" opacity=".75"/>`,
+        `<path d="M20 66h60L50 24z" fill="${C.navy}"/><path d="M50 24v42" stroke="white" stroke-width="4"/><circle cx="50" cy="66" r="6" fill="${C.gold}"/>`,
+        `<rect x="22" y="22" width="24" height="24" fill="${C.navy}"/><rect x="54" y="22" width="24" height="24" fill="${C.blue}"/><rect x="22" y="54" width="24" height="24" fill="${C.mint}"/><rect x="54" y="54" width="24" height="24" fill="${C.gold}"/>`,
+        `<path d="M25 25h34c16 0 21 18 8 28L50 66 33 53l17-13H25z" fill="${C.navy}"/><path d="M50 66l18 12" stroke="${C.blue}" stroke-width="6" stroke-linecap="round"/>`,
+        `<rect x="22" y="22" width="56" height="56" rx="12" fill="${C.navy}"/><rect x="40" y="40" width="38" height="38" rx="8" fill="white"/><path d="M40 59h38" stroke="${C.blue}" stroke-width="5"/>`,
+        `<path d="M18 58h28c8 0 10-16 20-16h16" stroke="${C.navy}" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M60 30l22 12-22 12z" fill="${C.blue}"/>`,
+        `<path d="M50 18l28 52H22z" fill="${C.navy}"/><path d="M50 32l13 25H37z" fill="white"/><path d="M50 32v25" stroke="${C.blue}" stroke-width="4"/>`
+      ];
+      return `<svg width="108" height="108" viewBox="0 0 100 100">${items[n]}</svg>`;
+    }
+
+    function svgE(i) {
+      const n = i % 10;
+      const items = [
+        `${word(50,49,32,C.navy,"KM")}<path d="M28 62h44" stroke="${C.blue}" stroke-width="5" stroke-linecap="round"/>`,
+        `<text x="50" y="52" text-anchor="middle" fill="${C.navy}" font-size="26" font-weight="820" font-family="Pretendard">케이엠</text><path d="M22 64h56" stroke="${C.gold}" stroke-width="4"/>`,
+        `<rect x="24" y="24" width="52" height="52" rx="14" fill="${C.navy}"/>${word(50,57,22,"white","KM")}`,
+        `<circle cx="50" cy="50" r="35" fill="${C.sky}" stroke="${C.blue}" stroke-width="3"/>${word(50,49,22,C.navy,"KM")}<text x="50" y="66" text-anchor="middle" fill="${C.muted || "#6c7582"}" font-size="8" font-weight="700" font-family="Pretendard">CONSULTING</text>`,
+        `<text x="50" y="42" text-anchor="middle" fill="${C.navy}" font-size="18" font-weight="820" font-family="Pretendard">케이엠</text><text x="50" y="60" text-anchor="middle" fill="${C.blue}" font-size="10" font-weight="760" font-family="Pretendard">MANAGEMENT</text>`,
+        `<path d="M25 25h50v50H25z" fill="none" stroke="${C.navy}" stroke-width="4"/><path d="M25 38h50" stroke="${C.blue}" stroke-width="4"/>${word(50,61,18,C.navy,"KM")}`,
+        `<path d="M24 58c16-23 32-28 52-33" stroke="${C.blue}" stroke-width="5" stroke-linecap="round"/>${word(47,52,24,C.navy,"KM")}`,
+        `<rect x="18" y="34" width="64" height="32" rx="16" fill="${C.navy}"/>${word(50,55,18,"white","KM")}`,
+        `<text x="50" y="45" text-anchor="middle" fill="${C.navy}" font-size="20" font-weight="820" font-family="Pretendard">KM</text><text x="50" y="61" text-anchor="middle" fill="${C.blue}" font-size="10" font-weight="720" font-family="Pretendard">경영컨설팅</text>`,
+        `<circle cx="50" cy="50" r="34" fill="${C.navy}"/><text x="50" y="47" text-anchor="middle" fill="white" font-size="19" font-weight="820" font-family="Pretendard">KM</text><text x="50" y="62" text-anchor="middle" fill="${C.gold}" font-size="8" font-weight="760" font-family="Pretendard">ADVISORY</text>`
+      ];
+      return `<svg width="108" height="108" viewBox="0 0 100 100">${items[n]}</svg>`;
+    }
+
+    const groups = [
+      ["group-a", 1, labels.a, svgA],
+      ["group-b", 11, labels.b, svgB],
+      ["group-c", 21, labels.c, svgC],
+      ["group-d", 31, labels.d, svgD],
+      ["group-e", 41, labels.e, svgE]
+    ];
+
+    groups.forEach(([id, start, list, fn]) => {
+      document.getElementById(id).innerHTML = list.map((label, idx) => card(start + idx, label, fn(idx))).join("");
+    });
+  </script>
+</body>
+</html>
