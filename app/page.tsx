@@ -284,16 +284,6 @@ export default async function HomePage({
         </ul>
       </section>
 
-      <footer className="homeFooter">
-        <div>
-          <Link className="brand" href="/">
-            <Image className="brandLogo" src="/images/logo-dog.png" alt="" width={30} height={30} />
-            <span>KM Consulting</span>
-          </Link>
-          <p>고객의 다음 행동이 쉬워지도록 필요한 연락 창구를 한곳에 모았습니다.</p>
-        </div>
-        <CustomerActionGrid compact />
-      </footer>
     </main>
   );
 }
