@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { createSupabaseServerClient } from "../../../lib/supabase/server";
+import { createSupabaseServerClient, hasSupabaseConfig } from "../../../lib/supabase/server";
 
 export type LoginState = {
   message: string;
@@ -37,6 +37,10 @@ function getRedirectTo(origin: string, next: string) {
 }
 
 export async function loginAction(_prevState: LoginState, formData: FormData): Promise<LoginState> {
+  if (!hasSupabaseConfig()) {
+    return { message: "Supabase environment variables are missing." };
+  }
+
   const supabase = await createSupabaseServerClient();
   const origin = await getOrigin();
   const next = getSafeNextPath(formData.get("next"));

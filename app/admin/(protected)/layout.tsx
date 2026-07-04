@@ -1,10 +1,14 @@
 import { redirect } from "next/navigation";
 import { isAdminEmail } from "../../../lib/admin";
-import { createSupabaseServerClient } from "../../../lib/supabase/server";
+import { createSupabaseServerClient, hasSupabaseConfig } from "../../../lib/supabase/server";
 import AdminShell from "./AdminShell";
 import { logoutAction } from "./actions";
 
 export default async function ProtectedAdminLayout({ children }: { children: React.ReactNode }) {
+  if (!hasSupabaseConfig()) {
+    redirect("/admin/login?error=config");
+  }
+
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },

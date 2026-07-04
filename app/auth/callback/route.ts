@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { isAdminEmail } from "../../../lib/admin";
-import { createSupabaseServerClient } from "../../../lib/supabase/server";
+import { createSupabaseServerClient, hasSupabaseConfig } from "../../../lib/supabase/server";
 
 function getSafeNextPath(value: string | null) {
   return value && value.startsWith("/") && !value.startsWith("//") ? value : "/admin";
@@ -11,6 +11,11 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get("code");
   const next = getSafeNextPath(requestUrl.searchParams.get("next"));
   const loginUrl = new URL("/admin/login", requestUrl.origin);
+
+  if (!hasSupabaseConfig()) {
+    loginUrl.searchParams.set("error", "config");
+    return NextResponse.redirect(loginUrl);
+  }
 
   if (!code) {
     loginUrl.searchParams.set("error", "auth");

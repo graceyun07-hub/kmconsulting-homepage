@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { isAdminEmail } from "../../../lib/admin";
-import { createSupabaseServerClient } from "../../../lib/supabase/server";
+import { createSupabaseServerClient, hasSupabaseConfig } from "../../../lib/supabase/server";
 import LoginForm from "./LoginForm";
 
 function getNotice(error?: string) {
@@ -22,13 +22,16 @@ export default async function AdminLoginPage({
   searchParams: Promise<{ error?: string; next?: string }>;
 }) {
   const params = await searchParams;
-  const supabase = await createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (isAdminEmail(user?.email)) {
-    redirect("/admin");
+  if (hasSupabaseConfig()) {
+    const supabase = await createSupabaseServerClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (isAdminEmail(user?.email)) {
+      redirect("/admin");
+    }
   }
 
   return (
