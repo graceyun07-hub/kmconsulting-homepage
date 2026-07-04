@@ -907,6 +907,59 @@
       word-break: break-all;
     }
 
+    .official-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .official-link {
+      min-height: 156px;
+      display: grid;
+      align-content: space-between;
+      gap: 16px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(17, 24, 39, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .official-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(20, 109, 168, 0.3);
+      box-shadow: 0 22px 48px rgba(17, 24, 39, 0.08);
+    }
+
+    .official-badge {
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 820;
+      letter-spacing: 0;
+    }
+
+    .official-link strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 780;
+      letter-spacing: -0.03em;
+    }
+
+    .official-link span:last-child {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 620;
+    }
+
     .recommend-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1012,11 +1065,16 @@
       }
 
       .card-grid,
-      .recommend-list {
+      .recommend-list,
+      .official-grid {
         grid-template-columns: 1fr;
       }
 
       .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .official-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1068,6 +1126,10 @@
         grid-template-columns: 1fr;
       }
 
+      .official-grid {
+        grid-template-columns: 1fr;
+      }
+
       .profile-section {
         gap: 16px;
       }
@@ -1097,7 +1159,8 @@
       .finder-result,
       .contact-form,
       .contact-side,
-      .notice-box {
+      .notice-box,
+      .official-link {
         padding: 24px;
       }
 
@@ -1158,8 +1221,10 @@
         <a href="#finder">상담 찾기</a>
         <a href="#process">컨설팅 안내</a>
         <a href="#about">회사 소개</a>
+        <a href="#official-links">유관기관</a>
         <a href="#contact">상담문의</a>
         <a href="#recommend">추천 대상</a>
+        <a href="/admin/login?next=%2Fadmin">관리자 로그인</a>
       </nav>
       <a class="menu-button" href="#contact" aria-label="상담문의로 이동">≡</a>
     </div>
@@ -1386,6 +1451,53 @@
       </div>
     </section>
 
+    <section class="band-soft" id="official-links">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">USEFUL LINKS</p>
+          <h2>소상공인과 세무 업무에 자주 쓰는 기관을 한곳에 모았습니다</h2>
+          <p>지원사업 확인부터 국세와 지방세 업무까지 필요한 공식 사이트로 바로 이동할 수 있습니다.</p>
+        </div>
+        <div class="official-grid">
+          <a class="official-link" href="https://www.semas.or.kr/" target="_blank" rel="noopener">
+            <span class="official-badge">SEMAS</span>
+            <span>
+              <strong>소상공인시장진흥공단</strong>
+              <span>소상공인 지원사업과 정책 정보를 확인할 수 있습니다.</span>
+            </span>
+          </a>
+          <a class="official-link" href="https://www.gmr.or.kr/" target="_blank" rel="noopener">
+            <span class="official-badge">GMR</span>
+            <span>
+              <strong>경기도시장상권진흥원</strong>
+              <span>경기도 소상공인, 전통시장, 골목상권 지원사업을 안내합니다.</span>
+            </span>
+          </a>
+          <a class="official-link" href="https://www.kacta.or.kr/new_new/kacpta22.asp?MpcVer=Y&pcVer=Y" target="_blank" rel="noopener">
+            <span class="official-badge">TAX</span>
+            <span>
+              <strong>한국세무사회</strong>
+              <span>세무사 정보와 세무 관련 안내를 확인할 수 있습니다.</span>
+            </span>
+          </a>
+          <a class="official-link" href="https://www.hometax.go.kr/" target="_blank" rel="noopener">
+            <span class="official-badge">HTX</span>
+            <span>
+              <strong>국세청 홈택스</strong>
+              <span>국세 신고, 납부, 증명 발급 등 세무 업무를 처리합니다.</span>
+            </span>
+          </a>
+          <a class="official-link" href="https://www.wetax.go.kr/" target="_blank" rel="noopener">
+            <span class="official-badge">WTX</span>
+            <span>
+              <strong>위택스</strong>
+              <span>지방세 신고, 납부, 조회 업무를 처리합니다.</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="wrap">
         <div class="section-head">
@@ -1517,6 +1629,7 @@
         <a href="https://pf.kakao.com/_gxnpbX/friend" target="_blank" rel="noopener">카카오톡</a>
         <a href="tel:010-3332-9114">전화</a>
         <a href="mailto:graceyun07@gmail.com">이메일</a>
+        <a href="/admin/login?next=%2Fadmin">관리자 로그인</a>
       </div>
     </div>
   </footer>
