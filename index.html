@@ -907,6 +907,66 @@
       word-break: break-all;
     }
 
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .action-button {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--navy);
+      box-shadow: 0 14px 30px rgba(17, 24, 39, 0.05);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-button:hover {
+      transform: translateY(-3px);
+      border-color: rgba(20, 109, 168, 0.35);
+      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.09);
+    }
+
+    .action-icon {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 820;
+    }
+
+    .action-button strong,
+    .footer-action strong {
+      display: block;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 780;
+      letter-spacing: -0.02em;
+    }
+
+    .action-button span:last-child,
+    .footer-action span:last-child {
+      display: block;
+      margin-top: 4px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 640;
+    }
+
     .official-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1031,6 +1091,32 @@
       flex-wrap: wrap;
       color: #fff;
       font-weight: 650;
+    }
+
+    .footer-actions {
+      width: min(100%, 620px);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .footer-action {
+      min-height: 72px;
+      display: grid;
+      align-content: center;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .footer-action strong {
+      color: #fff;
+    }
+
+    .footer-action span:last-child {
+      color: rgba(255, 255, 255, 0.68);
     }
 
     @media (max-width: 1024px) {
@@ -1200,6 +1286,16 @@
 
       .footer-inner {
         flex-direction: column;
+      }
+
+      .action-buttons,
+      .footer-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .action-button,
+      .footer-action {
+        min-height: 78px;
       }
     }
   </style>
@@ -1580,19 +1676,37 @@
               </div>
             </div>
           </form>
-          <aside class="contact-side" aria-label="빠른 상담 연락처">
-            <a class="contact-card" href="https://pf.kakao.com/_gxnpbX/friend" target="_blank" rel="noopener">
-              <strong>카카오톡 상담</strong>
-              <span>가장 빠르게 문의하기</span>
-            </a>
-            <a class="contact-card" href="mailto:graceyun07@gmail.com">
-              <strong>이메일 문의</strong>
-              <span>graceyun07@gmail.com</span>
-            </a>
-            <a class="contact-card" href="tel:010-3332-9114">
-              <strong>전화 문의</strong>
-              <span>010-3332-9114</span>
-            </a>
+          <aside class="contact-side" aria-label="고객 행동 버튼">
+            <div class="action-buttons">
+              <a class="action-button" href="tel:010-3332-9114">
+                <span class="action-icon" aria-hidden="true">☎</span>
+                <span>
+                  <strong>전화 걸기</strong>
+                  <span>010-3332-9114</span>
+                </span>
+              </a>
+              <a class="action-button" href="mailto:graceyun07@gmail.com">
+                <span class="action-icon" aria-hidden="true">@</span>
+                <span>
+                  <strong>이메일 문의</strong>
+                  <span>graceyun07@gmail.com</span>
+                </span>
+              </a>
+              <a class="action-button" href="https://pf.kakao.com/_gxnpbX/friend" target="_blank" rel="noopener">
+                <span class="action-icon" aria-hidden="true">톡</span>
+                <span>
+                  <strong>카카오톡 상담</strong>
+                  <span>빠른 상담 요청</span>
+                </span>
+              </a>
+              <a class="action-button" href="https://blog.naver.com/graceyun08" target="_blank" rel="noopener">
+                <span class="action-icon" aria-hidden="true">N</span>
+                <span>
+                  <strong>네이버 블로그</strong>
+                  <span>graceyun08</span>
+                </span>
+              </a>
+            </div>
           </aside>
         </div>
       </div>
@@ -1639,10 +1753,25 @@
         <strong>케이엠경영컨설팅</strong>
         <span>사업자의 성장을 돕는 경영 컨설팅</span>
       </div>
+      <div class="footer-actions" aria-label="빠른 고객 행동">
+        <a class="footer-action" href="tel:010-3332-9114">
+          <strong>전화 걸기</strong>
+          <span>010-3332-9114</span>
+        </a>
+        <a class="footer-action" href="mailto:graceyun07@gmail.com">
+          <strong>이메일 문의</strong>
+          <span>graceyun07@gmail.com</span>
+        </a>
+        <a class="footer-action" href="https://pf.kakao.com/_gxnpbX/friend" target="_blank" rel="noopener">
+          <strong>카카오톡 상담</strong>
+          <span>빠른 상담 요청</span>
+        </a>
+        <a class="footer-action" href="https://blog.naver.com/graceyun08" target="_blank" rel="noopener">
+          <strong>네이버 블로그</strong>
+          <span>graceyun08</span>
+        </a>
+      </div>
       <div class="footer-links">
-        <a href="https://pf.kakao.com/_gxnpbX/friend" target="_blank" rel="noopener">카카오톡</a>
-        <a href="tel:010-3332-9114">전화</a>
-        <a href="mailto:graceyun07@gmail.com">이메일</a>
         <a href="/admin/login?next=%2Fadmin">관리자 로그인</a>
       </div>
     </div>
